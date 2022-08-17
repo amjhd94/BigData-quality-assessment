@@ -19,6 +19,7 @@ With the packages installed, the code is ready to run.
 
 ## Tutorial
 In the demo code `BigDataQualityAssessment_ActiveSampling.py` we consider a scenario in which we are given a dataset of size 10000 and are asked to create a regression model, using a fully connected deep neural network, that takes a 2-dimensional input, **X**, and predicts the scalar output, $y$. The figure below depicts the full dataset, {**X**, $y$}, and the posterior, $p(y)$, in log scale. 
+
 <img src="https://user-images.githubusercontent.com/110791799/185191503-8be0ed0c-3a7b-4984-8a65-f73d75f742f4.png" alt="orig_ds" width="500"/>
 
 However, the question is "Do we need all 10000 training data to create an accurate model?". It is far more preferable to use as little data as possible to train such model because it **speeds up** the training process and we can **decrease memory usage** by discarding unimportant data. Therefore, we employ three exploratory algorithms that identify data subsets that 
@@ -157,13 +158,16 @@ for i in range(n_iter):
 At the end of this step, the dataset `[x_train, y_train]`, which is 2% as large as the original dataset represents the most important subset of the original dataset. A regression neural network trained with this data subset is as acuurate as a model trained with the original dataset.
 
 The figure below shows the progression of the model trained on the small data subset and compares it with the original dataset as the explorers identify informative points.
+
 <img src="https://user-images.githubusercontent.com/110791799/185217303-36731f05-89ed-44ac-84fe-6de8a647b037.gif" alt="model_prog" width="500"/>
 
 (_Blue stars_ represent the data points in the initially sampled training dataset, _white dots_ are the data chosen by the **squared error** explorer, _white crosses_ are the data chosen by the **prediction uncertainty** explorer, and _white tri-ups_ are the data chosen by the **rare event** explorer.)
 
 <img src="https://user-images.githubusercontent.com/110791799/185217610-b11261cb-b270-4bc7-8aa9-ab45219bb7aa.png" alt="conv" width="500"/>
 
-(In the figure above, the log pdf error metric is computed by <img src="https://user-images.githubusercontent.com/110791799/185176409-7e8d3751-1027-41ae-8618-86f96f408c23.png" alt="equ1" width="300"/>)
+In the figure above, the log pdf error metric is computed by 
+
+<img src="https://user-images.githubusercontent.com/110791799/185176409-7e8d3751-1027-41ae-8618-86f96f408c23.png" alt="equ1" width="300"/>
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
