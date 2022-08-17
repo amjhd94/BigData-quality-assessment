@@ -169,6 +169,8 @@ In the figure above, the log pdf error metric is computed by
 
 <img src="https://user-images.githubusercontent.com/110791799/185176409-7e8d3751-1027-41ae-8618-86f96f408c23.png" alt="equ1" width="300"/>
 
+### Note: The `SDE_forecast_ActiveSampling.py` code implements the same algorithms to select most informative data subsets for forecasting stochastic time series
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
