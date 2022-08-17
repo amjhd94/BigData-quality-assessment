@@ -154,7 +154,16 @@ for i in range(n_iter):
         ens_model.m_list[j].fit(x_train, y_train, epochs=epochs, batch_size=batch_size, verbose=0)
 ```
 
-In the end, 
+At the end of this step, the dataset `[x_train, y_train]`, which is 2% as large as the original dataset represents the most important subset of the original dataset. A regression neural network trained with this data subset is as acuurate as a model trained with the original dataset.
+
+The figure below shows the progression of the model trained on the small data subset and compares it with the original dataset as the explorers identify informative points.
+<img src="https://user-images.githubusercontent.com/110791799/185217303-36731f05-89ed-44ac-84fe-6de8a647b037.gif" alt="model_prog" width="500"/>
+
+(_Blue stars_ represent the data points in the initially sampled training dataset, _white dots_ are the data chosen by the **squared error** explorer, _white crosses_ are the data chosen by the **prediction uncertainty** explorer, and _white tri-ups_ are the data chosen by the **rare event** explorer.)
+
+<img src="https://user-images.githubusercontent.com/110791799/185217610-b11261cb-b270-4bc7-8aa9-ab45219bb7aa.png" alt="conv" width="500"/>
+
+(In the figure above, the log pdf error metric is computed by )
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
