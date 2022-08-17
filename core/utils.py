@@ -3,63 +3,9 @@ import scipy
 import os
 import warnings
 from KDEpy import FFTKDE
-import pylops
-
-def TV_reg_1D(y_noisy, mu=1, lamda=1.5, niter_out=200, niter_in=3, tol=1e-4, tau=1.0, iter_lim=30, damp=1e-10):
-    
-    Iop = pylops.Identity(len(y_noisy))    
-    
-    Dop = pylops.FirstDerivative(len(y_noisy), edge=True, kind="backward")
-    
-    xinv, niter = pylops.optimization.sparsity.SplitBregman(
-        Iop,
-        [Dop],
-        y_noisy,
-        niter_out,
-        niter_in,
-        mu=mu,
-        epsRL1s=[lamda],
-        tol=tol,
-        tau=tau,
-        **dict(iter_lim=iter_lim, damp=damp)
-    )
-    
-    return xinv
-
-
-def set_worker_env(n_threads=1):
-    """Prevents over-subscription in joblib."""
-    MAX_NUM_THREADS_VARS = [
-        "OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS",
-        "BLIS_NUM_THREADS", "VECLIB_MAXIMUM_THREADS", "NUMBA_NUM_THREADS",
-        "NUMEXPR_NUM_THREADS",
-    ]
-    for var in MAX_NUM_THREADS_VARS:
-        os.environ[var] = str(n_threads)
-
 
 def comp_pca(usnap, n_trunc, detrend=True):
-    """Perform Principal Component Analysis on data. 
-
-    Parameters
-    ----------
-    usnap : array
-        Data array, size (n_pts, n_dim).
-    n_trunc : integer
-        The number of PCA dimensions to be retained.
-    detrend : boolean, optional
-        Whether or not to deduct the mean from the data.
-
-    Returns
-    -------
-    lam : array
-        The first n_trunc PCA eigenvalues.
-    phi : array
-        The first n_trunc PCA eigenfunctions.
-    usnap_mean : array
-        The mean of the data.
-
-    """
+    """Perform Principal Component Analysis on data """
     m = usnap.shape[0]
     usnap_mean = np.mean(usnap, axis=0)
     if detrend:
