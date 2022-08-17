@@ -99,7 +99,8 @@ ens_model = UQ_NN(model_class=MyModel, train=Train_DS, lr=.001, epochs=300, batc
 5- At this step, we are ready to run the exploration algorithms over the original dataset and add 3\*n_iter new data points to our previous initial data subset. Note that instead of prescribing the size of the data subset, we can simply add data until certain convergence criteria (that are defined by the user) are met.
 ```py
 for i in range(n_iter):
-    # Squared Error explorer
+
+    # ============== Squared Error explorer ============== #
     y_test_pred, _ = ens_model._predict_mean_var(pts_temp)
     squared_error_field = (y_test_pred.reshape(y_temp.shape) - y_temp)**2
     
@@ -116,7 +117,7 @@ for i in range(n_iter):
     y_temp = np.delete(y_temp, max_arg)
     pts_temp = np.delete(pts_temp, max_arg, axis=0)
     
-    # Prediction uncertainty explorer
+    # ============== Prediction uncertainty explorer ============== #
     acq_fcn = acquisition_fcn(acquisition='us', ens_model=ens_model, pts=pts_temp).eval_acq()
     
     max_arg = np.argmax(acq_fcn)
@@ -132,7 +133,7 @@ for i in range(n_iter):
     y_temp = np.delete(y_temp, max_arg)
     pts_temp = np.delete(pts_temp, max_arg, axis=0)
     
-    # Rare event explorer
+    # ============== Rare event explorer ============== #
     acq_fcn = acquisition_fcn(acquisition='us_lw', ens_model=ens_model, pts=pts_temp).eval_acq()
     
     max_arg = np.argmax(acq_fcn)
