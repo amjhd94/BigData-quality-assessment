@@ -5,7 +5,27 @@ import warnings
 from KDEpy import FFTKDE
 
 def comp_pca(usnap, n_trunc, detrend=True):
-    """Perform Principal Component Analysis on data """
+    """Perform Principal Component Analysis on data. 
+
+    Parameters
+    ----------
+    usnap : array
+        Data array, size (n_pts, n_dim).
+    n_trunc : integer
+        The number of PCA dimensions to be retained.
+    detrend : boolean, optional
+        Whether or not to deduct the mean from the data.
+
+    Returns
+    -------
+    lam : array
+        The first n_trunc PCA eigenvalues.
+    phi : array
+        The first n_trunc PCA eigenfunctions.
+    usnap_mean : array
+        The mean of the data.
+
+    """
     m = usnap.shape[0]
     usnap_mean = np.mean(usnap, axis=0)
     if detrend:
