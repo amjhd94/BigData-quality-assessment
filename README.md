@@ -163,7 +163,7 @@ The figure below shows the progression of the model trained on the small data su
 
 <img src="https://user-images.githubusercontent.com/110791799/185217610-b11261cb-b270-4bc7-8aa9-ab45219bb7aa.png" alt="conv" width="500"/>
 
-(In the figure above, the log pdf error metric is computed by )
+(In the figure above, the log pdf error metric is computed by <img src="https://user-images.githubusercontent.com/110791799/185176409-7e8d3751-1027-41ae-8618-86f96f408c23.png" alt="equ1" width="300"/>)
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
