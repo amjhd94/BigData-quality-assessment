@@ -159,7 +159,7 @@ At the end of this step, the dataset `[x_train, y_train]`, which is 2% as large 
 
 The figure below shows the progression of the model trained on the small data subset and compares it with the original dataset as the explorers identify informative points.
 
-<img src="https://user-images.githubusercontent.com/110791799/185217303-36731f05-89ed-44ac-84fe-6de8a647b037.gif" alt="model_prog" width="500"/>
+<img src="https://user-images.githubusercontent.com/110791799/185465588-b70b646c-63a5-4275-8c50-fc2253183e0f.gif" alt="model_prog" width="500"/>
 
 (_Blue stars_ represent the data points in the initially sampled training dataset, _white dots_ are the data chosen by the **squared error** explorer, _white crosses_ are the data chosen by the **prediction uncertainty** explorer, and _white tri-ups_ are the data chosen by the **rare event** explorer.)
 
