@@ -31,7 +31,7 @@ ii) Significantly decrease the prediction uncertainty at the discarded data loca
 iii) Minimizes the difference between the model posterior and the original dataset output density functions in **log-scale**, thus ensuring that the rare and extreme events in the original dataset are accounted for in the new data subset and the model is able to predict them.
 
 
-1- We first begin by importing the required modules:
+### 1- We first begin by importing the required modules:
 ```py
 import sys
 sys.path.append('core/')
@@ -50,7 +50,7 @@ sns.set()
 tf.keras.backend.set_floatx('float64')
 ```
 
-2- Next, we import (actually create, since this is a demo problem) the "large" dataset that was shown in the figure above:
+### 2- Next, we import (actually create, since this is a demo problem) the "large" dataset that was shown in the figure above:
 ```py
 ndim = 2
 domain = [ [-1, 1] ] * ndim
@@ -59,7 +59,7 @@ pts = inputs.draw_samples(n_samples=100, sample_method="grd")
 y = pts[:,0]**3 - pts[:,0] + pts[:,1]**2 + .5*np.sin(8*pts[:,0]*pts[:,1])
 ```
 
-3- In this step, we select an initial small subset of the original dataset. The small subset can be randomly sampled from the original dataset or with any other arbitrary weight. I chose the weight to be $1/p(y)$ so that I'm sure that I have included at least some of the rare events in the initial data subset. This is not necessary since the algorithms eventually find the rare events. After the initial data subset is sampled, we create the initial training dataset with it.
+### 3- In this step, we select an initial small subset of the original dataset. The small subset can be randomly sampled from the original dataset or with any other arbitrary weight. I chose the weight to be $1/p(y)$ so that I'm sure that I have included at least some of the rare events in the initial data subset. This is not necessary since the algorithms eventually find the rare events. After the initial data subset is sampled, we create the initial training dataset with it.
 
 ```py
 Size = 10
@@ -79,7 +79,7 @@ y_train = np.array(y_train)
 x_train = np.array(x_train)
 ```
 
-4- Now, we create and train an ensemble of fully connected deep neural networks on the small training dataset from the previous step.
+### 4- Now, we create and train an ensemble of fully connected deep neural networks on the small training dataset from the previous step.
 ```py
 class MyModel(keras.Model):
     def model(self, activation='swish', ker_initializer=None):
@@ -97,7 +97,7 @@ Train_DS = [x_train, y_train]
 ens_model = UQ_NN(model_class=MyModel, train=Train_DS, lr=.001, epochs=300, batch_size=batch_size)
 ```
 
-5- At this step, we are ready to run the exploration algorithms over the original dataset and add 3\*n_iter new data points to our previous initial data subset. Note that instead of prescribing the size of the data subset, we can simply add data until certain convergence criteria (that are defined by the user) are met.
+### 5- At this step, we are ready to run the exploration algorithms over the original dataset and add 3\*n_iter new data points to our previous initial data subset. Note that instead of prescribing the size of the data subset, we can simply add data until certain convergence criteria (that are defined by the user) are met.
 ```py
 for i in range(n_iter):
 
