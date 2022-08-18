@@ -1,5 +1,5 @@
 # Big Data Quality Assessment
-In the era of abundance data, and high velocity and variety information assets a data analyst's job has become more difficult to examine the qulity of such datasets, identify their redundancies, figure out where the datasets lack vital information and how to break them down into managable sub-dataset. Hence, the objective in this project is to employ Bayesian statistics and create parallel exploration algorithms that identify the most informative subsets of large datasets and eliminate their redundancies. The new data subset is then used to train a deep neural network model which is able to capture the rare and extreme events, has minimum prediction uncertainty and mean squared error (MSE) compared to the original dataset.
+In the era of abundance data, and high velocity and variety information assets a data analyst's job has become more difficult to examine the quality of such datasets, identify their redundancies, figure out where the datasets lack vital information and how to break them down into manageable sub-dataset. Hence, the objective in this project is to employ Bayesian statistics and create parallel exploration algorithms that identify the most informative subsets of large datasets and eliminate their redundancies. The new data subset is then used to train a deep neural network model which is able to capture the rare and extreme events, has minimum prediction uncertainty and mean squared error (MSE) compared to the original dataset.
 
 ## Getting Started
 The codes were written, run and tested by Spyder IDE version 4.2.5.
@@ -155,7 +155,7 @@ for i in range(n_iter):
         ens_model.m_list[j].fit(x_train, y_train, epochs=epochs, batch_size=batch_size, verbose=0)
 ```
 
-At the end of this step, the dataset `[x_train, y_train]`, which is 2% as large as the original dataset represents the most important subset of the original dataset. A regression neural network trained with this data subset is as acuurate as a model trained with the original dataset.
+At the end of this step, the dataset `[x_train, y_train]`, which is 2% as large as the original dataset represents the most important subset of the original dataset. A regression neural network trained with this data subset is as accurate as a model trained with the original dataset.
 
 The figure below shows the progression of the model trained on the small data subset and compares it with the original dataset as the explorers identify informative points.
 
@@ -165,11 +165,11 @@ The figure below shows the progression of the model trained on the small data su
 
 <img src="https://user-images.githubusercontent.com/110791799/185217610-b11261cb-b270-4bc7-8aa9-ab45219bb7aa.png" alt="conv" width="500"/>
 
-In the figure above, the log pdf error metric is computed by 
+In the figure above, the log pdf error metric is computed by the following to ensure if the rare/extreme events are accounted for:
 
 <img src="https://user-images.githubusercontent.com/110791799/185176409-7e8d3751-1027-41ae-8618-86f96f408c23.png" alt="equ1" width="300"/>
 
-### Note: The `SDE_forecast_ActiveSampling.py` code implements the same algorithms to select most informative data subsets for forecasting stochastic time series
+### Note: The `SDE_forecast_ActiveSampling.py` code implements the same algorithms to select most informative data subsets for forecasting stochastic time series.
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
