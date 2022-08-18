@@ -2,7 +2,7 @@
 In the era of abundance data, and high velocity and variety information assets a data analyst's job has become more difficult to examine the qulity of such datasets, identify their redundancies, figure out where the datasets lack vital information and how to break them down into managable sub-dataset. Hence, the objective in this project is to employ Bayesian statistics and create parallel exploration algorithms that identify the most informative subsets of large datasets and eliminate their redundancies. The new data subset is then used to train a deep neural network model which is able to capture the rare and extreme events, has minimum prediction uncertainty and mean squared error (MSE) compared to the original dataset.
 
 ## Getting Started
-The codes was written, run and tested by Spyder IDE version 4.2.5.
+The codes were written, run and tested by Spyder IDE version 4.2.5.
 The following is the required packages for this project:
 ```bash
 pip install numpy==1.21.2
